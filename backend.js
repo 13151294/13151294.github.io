@@ -66,6 +66,7 @@ function play(){
     })
 }
 
+//node for each path in maze
 class node {
     
     constructor (pos, value, parent) {
