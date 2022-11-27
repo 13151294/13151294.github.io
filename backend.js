@@ -4,6 +4,7 @@ var boardWall = [];
 var flagCountGame = 0;
 var connect = []
 
+//when click run button gonna run this command
 function play(){
     for (let y = 0; y < boardWall.length; y++) {
         if (!boardWall[y].includes(2)) {
