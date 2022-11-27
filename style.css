@@ -1,0 +1,340 @@
+:root {
+    --nodeSize : 4vmin;
+}
+html {
+    margin: 0px;
+    height: 100%;
+}
+* {
+    font-family: 'Lilita One', cursive;
+}
+body {
+    background: linear-gradient(to bottom, #8a7ef8, #ac78e9, #da9bd0);
+    height: 100%;
+    margin: 0px;
+}
+header {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    font-size: 12vmin;
+    color: #defbf1;
+    justify-content: center;
+    background: linear-gradient(180deg, #34263e58, #34263e25 );
+}
+.center-flex {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+}
+/*Board*/
+#board {
+    width: 64vmin;
+    height: 64vmin;
+    padding : 0px;
+    display: grid;
+    gap: 0px;
+    place-items: center;
+}
+.node {
+    background-color: #defbf1;
+    font-size: calc(var(--nodeSize) * 0.4);
+    color: #FF5FA3;
+    width: var(--nodeSize);
+    height: var(--nodeSize);
+    margin: 0px;
+    border: 0px;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.node:last-child {
+    border-bottom-right-radius: 100%;
+}
+.node:first-child {
+    border-top-left-radius: 100%;
+}
+.node.wall {
+    animation: wall-anime 0.25s;
+    background: #bbff00;
+}
+.node.path {
+    animation: path-anime 0.25s;
+    background: #d4cbd8;
+}
+.node > i.fa-flag {
+    display: none;
+}
+.node.flag > i.fa-flag {
+    display: flex;
+    animation: flag-anime 0.25s;
+}
+.node::selection {
+    border: 0px;
+}
+@keyframes wall-anime {
+    from {
+        background: #defbf1;
+    }
+    to {
+        background: #bbff00;
+    }
+}
+@keyframes path-anime {
+    from {
+        background: #defbf1;
+    }
+    to {
+        background: #d4cbd8;
+    }
+}
+@keyframes flag-anime {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/*Tool aside*/
+#tool {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 64vmin;
+    width: 12.8vmin;
+    background: #defbf1;
+    left: 2.5vmin;
+    border-radius: 12.8vmin;
+}
+#tool.disable {
+    opacity: 0;
+    animation: toolDisable 0.25s;
+}
+@keyframes toolDisable {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.tool-item {
+    width: 10vmin;
+    height: 10vmin;
+    border-radius: 100%;
+    margin-bottom: 2.333vmin;
+    font-size: 5vmin;
+    display: grid;
+    place-items: center;
+}
+.tool-item.disable {
+    background: #B0E6D4;
+    color: #c18ff9;
+    animation: tool-disable 0.5s;
+}
+.tool-item.enable {
+    background: #c18ff9;
+    color: #defbf1;
+    animation: tool-enable 0.5s;
+}
+.tool-item:nth-child(4) {
+    opacity: 0;
+}
+.tool-item:last-child {
+    margin: 0;
+}
+.tool-item:hover > .tool-icon {
+    display: none;
+}
+.tool-num {
+    display: none;
+    margin: 0px;
+}
+.tool-item:hover > .tool-num {
+    display: flex;
+}
+@keyframes tool-enable {
+    from {
+        background: #b0e6d4;
+        color: #c18ff9;
+    }
+    to {
+        background: #c18ff9;
+        color: #defbf1;
+    }
+}
+@keyframes tool-disable {
+    from {
+        
+        background: #c18ff9;
+        color: #defbf1;
+    }
+    to {
+        background: #b0e6d4;
+        color: #c18ff9;
+    }
+}
+/*Setting Panel*/
+#setting-panel {
+    display: grid;
+    place-content: center;
+    grid-template-rows: 20% 8% 52% 20%;
+    background: #defbf1;
+    position: absolute;
+    margin: 0px;
+    padding: 2.5vmin;
+    width: 64vmin;
+    height: 64vmin;
+    border: 1vmin solid #ac78e9;
+    border-radius: 10%;
+}
+#setting-panel.disable {
+    display: none;
+    animation: fade-out 0.25s;
+
+}
+#setting-panel.enable {
+    animation: fade-in 0.25s;
+}
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+#setting-label {
+    font-size: 10vmin;
+    color: #c97cfd;
+    text-align: center;
+}
+.setting-option {
+    width: 64vmin;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.blocks-radio {
+    display: flex;
+    font-size: 5vmin;
+    color: #fd7cad;
+    place-content: center;
+    margin: 0px;
+    gap: 2vmin;
+}
+.blocks-radio > input[type=radio] {
+    width: 3vmin;
+    height: 3vmin;
+    margin: 0px;
+    margin-top: 1.25vmin;
+    appearance: none;
+    border-radius: 50%;
+    background: #defbf1;
+    border: 0.5vmin solid #defbf1;
+    box-shadow: 0 0 0 0.5vmin #ee99fd;
+}
+.blocks-radio > input[type=radio]:checked {
+    background: #fa5d99;
+    animation: blocksRadioFade 0.5s;
+}
+@keyframes blocksRadioFade {
+    0% {
+        background-color: #defbf1;
+        border: 0.5vmin solid #defbf1;
+        box-shadow: 0 0 0 0.5vmin #ee99fd;
+
+    }
+    50% {
+        border: 0.25vmin solid #defbf1;
+        box-shadow: 0 0 0 0.25vmin #ee99fd;
+    }
+    100% {
+        background-color: #fa5d99;
+        border: 0.5vmin solid #defbf1;
+        box-shadow: 0 0 0 0.5vmin #ee99fd;
+    }
+}
+#option-label {
+    font-size: 5vmin;
+    color: #fd7cdf;
+    margin: 0px;
+}
+/*Update Setting Button*/
+#update-div {
+    display: flex;
+    place-content: center;
+    width: 100%;
+}
+#update {
+    background: #c97cfd;
+    width: 40vmin;
+    height: 100%;
+    border: 1vmin solid #ac78e9;
+    border-radius: 4vmin;
+    font-size: 8vmin;
+    color: #defbf1;
+}
+#update:active {
+    animation: updatePressed 0.2s;
+}
+@keyframes updatePressed {
+    from {
+        background: #c97cfd;
+        border: 1vmin solid #ac78e9;
+        width: 40vmin;
+        height: 100%;
+    }
+    50% {
+        background: #d291fd;
+        border: 1vmin solid #b385e7;
+        width: 39.5vmin;
+        height: calc(100% - 0.5vmin);
+    }
+    to {
+        background: #c97cfd;
+        border: 1vmin solid #ac78e9;
+        width: 40vmin;
+        height: 100%;
+    }
+}
+/*Play Button*/
+.run-button {
+    position: absolute;
+    height: 13vmin;
+    width: 13vmin;
+    bottom: 0px;
+    background: #defbf1;
+    border: 0px;
+    border-radius: 100%;
+    margin: 2vmin;
+    font-size: 6vmin;
+    color: #ac78e9;
+}
+.run-button:active {
+    animation: playPressed 0.2s;
+}
+.run-button.disable {
+    display: none;
+}
+@keyframes playPressed {
+    from {
+        background: #defbf1;
+        color: #ac78e9;
+        width: 13vmin;
+        height: 13vmin;
+    }
+    50% {
+        background: #7cfed1;
+        color: #d6b7fa;
+        width: 12vmin;
+        height: 12vmin;
+    }
+    to {
+        background: #defbf1;
+        color: #ac78e9;
+        width: 13vmin;
+        height: 13vmin;
+    }
+}

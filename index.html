@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Led board</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+        <script src="frontend.js"></script>
+        <script src="backend.js"></script>
+        <script src="https://kit.fontawesome.com/9d46fcd926.js" crossorigin="anonymous"></script>
+    </head>
+    <body onload="start()">
+        <header id="header">
+            Pettan
+        </header>
+        <section class = "center-flex">
+            <article id="board">
+            </article>
+            <aside id="tool" class="enable">
+                <div class="tool-item enable" id="wall" onclick="toolSelection(0)"><i class="fa fa-square tool-icon"></i><p class="tool-num">1</p></div>
+                <div class="tool-item disable" id="flag" onclick="toolSelection(1)"><i class="fa fa-flag tool-icon"></i><p class="tool-num">2</p></div>
+                <div class="tool-item disable" id="eraser" onclick="toolSelection(2)"><i class="fa fa-eraser tool-icon"></i><p class="tool-num">3</p></div>
+                <div class="tool-item disable"></div>
+                <div class="tool-item disable" id="setting" onclick="setting()"><i class="fa fa-sliders"></i></div>
+            </aside>
+            <aside id="setting-panel" class="disable">
+                <div id="setting-label">
+                    Setting
+                </div>
+                <div class="setting-option">
+                    <div id="option-label">Blocks :</div>
+                    <div class="blocks-radio">
+                        4
+                        <input type="radio" name="blocks" value="4" checked="true">
+                    </div>
+                    <div class="blocks-radio">
+                        8
+                        <input type="radio" name="blocks" value="8" checked="true">
+                    </div>
+                    <div class="blocks-radio">
+                        16
+                        <input type="radio" name="blocks" value="16">
+                    </div>
+                </div>
+                <div></div>
+                <div id="update-div">
+                    <button id="update" type="button" onclick="updateBoard()">
+                        Update
+                    </button>
+                </div>
+            </aside>
+            <button id="play" class="run-button" onclick="play_button()">
+                <i class="fa fa-play"></i>
+            </button>
+            <button id="restart" class="run-button disable" onclick="restart()">
+                <i class="fa fa-rotate-right"></i>
+            </button>
+            <script>
+                function play_button() {
+                    play()
+                    run()
+                }
+                function restart() {
+                    location.reload()
+                }
+            </script>
+        </section>
+    </body>
+</html>
