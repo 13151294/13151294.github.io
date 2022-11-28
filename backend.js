@@ -54,7 +54,7 @@ function play(){
 
         closeNode.push(currentNode)
         if (openNode.length == 0){
-            document.getElementById("header").innerHTML = "DEAD END"
+            document.getElementById("header").innerHTML = "Tang Tan"
             return
         }
         currentNode = openNode.shift()
